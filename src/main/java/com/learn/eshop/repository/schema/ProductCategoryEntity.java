@@ -22,7 +22,7 @@ public class ProductCategoryEntity {
   @GeneratedValue
   private UUID id;
 
-  private String categoryName;
+  private String name;
 
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "categoryEntity")
   private Set<ProductEntity> productEntities;
