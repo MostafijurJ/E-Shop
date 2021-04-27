@@ -3,12 +3,11 @@ package com.learn.eshop.repository.schema;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.Type;
+import org.hibernate.annotations.UpdateTimestamp;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.UUID;
@@ -21,7 +20,7 @@ import java.util.UUID;
 public class ProductEntity {
 
   @Id
-  @GeneratedValue
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Type(type = "uuid-char")
   private UUID id;
 
@@ -39,8 +38,14 @@ public class ProductEntity {
 
   private boolean active;
 
+  @CreationTimestamp
   private Date dateCreated;
 
+  @UpdateTimestamp
   private Date lastUpdated;
+
+  @ManyToOne
+  @JoinColumn(name = "category_id", nullable = false)
+  private ProductCategoryEntity categoryEntity;
 
 }
