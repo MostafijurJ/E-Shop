@@ -30,7 +30,7 @@ public class ProductCategoryService {
   }
 
 
-  private ProductCategory entityToDomain(ProductCategoryEntity entity) {
+  public ProductCategory entityToDomain(ProductCategoryEntity entity) {
     var domain = new ProductCategory();
     BeanUtils.copyProperties(entity, domain);
     return domain;

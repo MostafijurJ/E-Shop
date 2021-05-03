@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @CrossOrigin
@@ -21,5 +22,10 @@ public class ProductController implements ProductApi{
   @Override
   public ResponseEntity<List<Product>> getAllProducts() {
     return ResponseEntity.ok(productService.getAllProducts());
+  }
+
+  @Override
+  public ResponseEntity<List<Product>> getAllProductsByCategory(UUID categoryId) {
+    return ResponseEntity.ok(productService.getProductsByCategory(categoryId));
   }
 }
