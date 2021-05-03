@@ -14,7 +14,7 @@ import java.util.UUID;
 @Setter
 @Accessors(chain = true)
 @Entity
-@Table(name = SchemaConstant.PRODUCT_QUANTITY_TABLE_NAME)
+@Table(name = SchemaConstant.PRODUCT_CATEGORY_TABLE_NAME)
 public class ProductCategoryEntity {
 
   @Id
