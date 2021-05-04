@@ -28,4 +28,9 @@ public class ProductController implements ProductApi{
   public ResponseEntity<List<Product>> getAllProductsByCategory(UUID categoryId) {
     return ResponseEntity.ok(productService.getProductsByCategory(categoryId));
   }
+
+  @Override
+  public ResponseEntity<List<Product>> searchProductsByName(String name) {
+    return ResponseEntity.ok(productService.searchProductsByName(name));
+  }
 }

@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.UUID;
@@ -34,4 +35,14 @@ public interface ProductApi {
       })
   @GetMapping("{categoryId}")
   ResponseEntity<List<Product>> getAllProductsByCategory(@PathVariable("categoryId") UUID categoryId);
+
+  @ApiOperation(
+      value = "search products by name",
+      nickname = "search products by name",
+      notes = "search products by name",
+      tags = {
+          "products",
+      })
+  @GetMapping("/search")
+  ResponseEntity<List<Product>> searchProductsByName(@RequestParam(value = "name") String name);
 }

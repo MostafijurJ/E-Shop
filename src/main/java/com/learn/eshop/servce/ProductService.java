@@ -35,10 +35,16 @@ public class ProductService {
     return entities.stream().map(this::entityToDomain).collect(Collectors.toList());
   }
 
+  public List<Product> searchProductsByName(String name) {
+    var entities = productRepository.findByNameContaining(name);
+    return entities.stream().map(this::entityToDomain).collect(Collectors.toList());
+  }
+
   private Product entityToDomain(ProductEntity entity) {
     Product domain = new Product();
     BeanUtils.copyProperties(entity, domain);
     return domain;
   }
+
 
 }

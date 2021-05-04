@@ -13,4 +13,6 @@ import java.util.UUID;
 @CrossOrigin
 public interface ProductRepository extends JpaRepository<ProductEntity, UUID> {
   List<ProductEntity> findByCategoryEntity(ProductCategoryEntity entity);
+
+  List<ProductEntity> findByNameContaining(String name);
 }
