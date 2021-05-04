@@ -3,12 +3,14 @@ package com.learn.eshop.controller;
 import com.learn.eshop.domain.ProductCategory;
 import com.learn.eshop.servce.ProductCategoryService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.UUID;
 
 @RestController
+@CrossOrigin
 public class ProductCategoryController implements ProductCategoryApi {
   private final ProductCategoryService productCategoryService;
 
