@@ -28,6 +28,12 @@ public class ProductService {
     return entities.stream().map(this::entityToDomain).collect(Collectors.toList());
   }
 
+  public Product getProductById(UUID uuid) {
+    var entity = productRepository.findById(uuid).orElseThrow(() ->
+        new ResourceNotFoundException("Product not found with id : " + uuid));
+    return entityToDomain(entity);
+  }
+
   public List<Product> getProductsByCategory(UUID categoryId) {
     var categoryEntity = productCategoryRepository.findById(categoryId).orElseThrow(() ->
         new ResourceNotFoundException("Product Category not found with id : " + categoryId));
@@ -45,6 +51,5 @@ public class ProductService {
     BeanUtils.copyProperties(entity, domain);
     return domain;
   }
-
 
 }

@@ -33,8 +33,18 @@ public interface ProductApi {
       tags = {
           "products",
       })
-  @GetMapping("{categoryId}")
-  ResponseEntity<List<Product>> getAllProductsByCategory(@PathVariable("categoryId") UUID categoryId);
+  @GetMapping("/category")
+  ResponseEntity<List<Product>> getAllProductsByCategory(@RequestParam(value = "categoryId") UUID categoryId);
+
+  @ApiOperation(
+      value = "Get products by Id",
+      nickname = "Get products by Id",
+      notes = "Get products by Id",
+      tags = {
+          "products",
+      })
+  @GetMapping("{id}")
+  ResponseEntity<Product> getProductsById(@PathVariable("id") UUID uuid);
 
   @ApiOperation(
       value = "search products by name",
