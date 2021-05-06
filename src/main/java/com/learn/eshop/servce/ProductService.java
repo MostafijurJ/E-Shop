@@ -5,6 +5,8 @@ import com.learn.eshop.repository.jpa.ProductCategoryRepository;
 import com.learn.eshop.repository.jpa.ProductRepository;
 import com.learn.eshop.repository.schema.ProductEntity;
 import org.springframework.beans.BeanUtils;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -23,15 +25,25 @@ public class ProductService {
     this.productCategoryRepository = productCategoryRepository;
   }
 
-  public List<Product> getAllProducts() {
-    var entities = productRepository.findAll();
-    return entities.stream().map(this::entityToDomain).collect(Collectors.toList());
+  public Page<Product> getAllProducts(Pageable pageable) {
+    return productRepository.findAll(pageable).map(this::entityToDomain);
+  }
+
+  public Product getProductById(UUID uuid) {
+    var entity = productRepository.findById(uuid).orElseThrow(() ->
+        new ResourceNotFoundException("Product not found with id : " + uuid));
+    return entityToDomain(entity);
   }
 
   public List<Product> getProductsByCategory(UUID categoryId) {
     var categoryEntity = productCategoryRepository.findById(categoryId).orElseThrow(() ->
         new ResourceNotFoundException("Product Category not found with id : " + categoryId));
     var entities = productRepository.findByCategoryEntity(categoryEntity);
+    return entities.stream().map(this::entityToDomain).collect(Collectors.toList());
+  }
+
+  public List<Product> searchProductsByName(String name) {
+    var entities = productRepository.findByNameContaining(name);
     return entities.stream().map(this::entityToDomain).collect(Collectors.toList());
   }
 

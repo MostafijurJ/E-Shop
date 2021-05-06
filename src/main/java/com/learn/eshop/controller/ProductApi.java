@@ -3,10 +3,13 @@ package com.learn.eshop.controller;
 import com.learn.eshop.domain.Product;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.UUID;
@@ -23,7 +26,7 @@ public interface ProductApi {
           "products",
       })
   @GetMapping
-  ResponseEntity<List<Product>> getAllProducts();
+  ResponseEntity<Page<Product>> getAllProducts(Pageable pageable);
 
   @ApiOperation(
       value = "Get all products by category",
@@ -32,6 +35,26 @@ public interface ProductApi {
       tags = {
           "products",
       })
-  @GetMapping("{categoryId}")
-  ResponseEntity<List<Product>> getAllProductsByCategory(@PathVariable("categoryId") UUID categoryId);
+  @GetMapping("/category")
+  ResponseEntity<List<Product>> getAllProductsByCategory(@RequestParam(value = "categoryId") UUID categoryId);
+
+  @ApiOperation(
+      value = "Get products by Id",
+      nickname = "Get products by Id",
+      notes = "Get products by Id",
+      tags = {
+          "products",
+      })
+  @GetMapping("{id}")
+  ResponseEntity<Product> getProductsById(@PathVariable("id") UUID uuid);
+
+  @ApiOperation(
+      value = "search products by name",
+      nickname = "search products by name",
+      notes = "search products by name",
+      tags = {
+          "products",
+      })
+  @GetMapping("/search")
+  ResponseEntity<List<Product>> searchProductsByName(@RequestParam(value = "name") String name);
 }
