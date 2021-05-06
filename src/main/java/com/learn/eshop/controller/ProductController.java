@@ -2,6 +2,8 @@ package com.learn.eshop.controller;
 
 import com.learn.eshop.domain.Product;
 import com.learn.eshop.servce.ProductService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,8 +22,8 @@ public class ProductController implements ProductApi{
   }
 
   @Override
-  public ResponseEntity<List<Product>> getAllProducts() {
-    return ResponseEntity.ok(productService.getAllProducts());
+  public ResponseEntity<Page<Product>> getAllProducts(Pageable pageable) {
+    return ResponseEntity.ok(productService.getAllProducts(pageable));
   }
 
   @Override

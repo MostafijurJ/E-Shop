@@ -3,6 +3,8 @@ package com.learn.eshop.controller;
 import com.learn.eshop.domain.Product;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,7 +26,7 @@ public interface ProductApi {
           "products",
       })
   @GetMapping
-  ResponseEntity<List<Product>> getAllProducts();
+  ResponseEntity<Page<Product>> getAllProducts(Pageable pageable);
 
   @ApiOperation(
       value = "Get all products by category",
