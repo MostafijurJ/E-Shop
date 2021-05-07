@@ -2,7 +2,7 @@ package com.learn.eshop.controller;
 
 import com.learn.eshop.domain.Product;
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -18,43 +18,19 @@ import java.util.UUID;
 @RequestMapping(path = "/products")
 public interface ProductApi {
 
-  @ApiOperation(
-      value = "Get all products",
-      nickname = "Get all products",
-      notes = "Get all products",
-      tags = {
-          "products",
-      })
+  @Operation(summary = "Get a book by its id")
   @GetMapping
   ResponseEntity<Page<Product>> getAllProducts(Pageable pageable);
 
-  @ApiOperation(
-      value = "Get all products by category",
-      nickname = "Get all products by category",
-      notes = "Get all products by category",
-      tags = {
-          "products",
-      })
+  @Operation(summary = "Get all products by category")
   @GetMapping("/category")
   ResponseEntity<List<Product>> getAllProductsByCategory(@RequestParam(value = "categoryId") UUID categoryId);
 
-  @ApiOperation(
-      value = "Get products by Id",
-      nickname = "Get products by Id",
-      notes = "Get products by Id",
-      tags = {
-          "products",
-      })
+  @Operation(summary = "Get products by Id")
   @GetMapping("{id}")
   ResponseEntity<Product> getProductsById(@PathVariable("id") UUID uuid);
 
-  @ApiOperation(
-      value = "search products by name",
-      nickname = "search products by name",
-      notes = "search products by name",
-      tags = {
-          "products",
-      })
+  @Operation(summary = "search products by name")
   @GetMapping("/search")
   ResponseEntity<List<Product>> searchProductsByName(@RequestParam(value = "name") String name);
 }
