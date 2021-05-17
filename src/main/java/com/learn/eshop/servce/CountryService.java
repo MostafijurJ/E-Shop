@@ -18,7 +18,7 @@ public class CountryService {
   }
 
   public List<Country> getAllCountries() {
-    var entities = countryRepository.findAll();
+    var entities = countryRepository.findAllByOrderByName();
     return entities.stream().map(this::entityToDomain).collect(Collectors.toList());
   }
 
