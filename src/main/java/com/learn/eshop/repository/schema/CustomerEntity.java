@@ -21,7 +21,6 @@ import java.util.UUID;
 public class CustomerEntity {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Type(type = "uuid-char")
   private UUID id;
 
@@ -39,5 +38,18 @@ public class CustomerEntity {
 
   @OneToMany(mappedBy = "customerEntity", cascade = CascadeType.ALL)
   private Set<OrderEntity> orderEntities = new HashSet<>();
+
+  /*public void add(OrderEntity order) {
+
+    if (order != null) {
+
+      if (orderEntities == null) {
+        orderEntities = new HashSet<>();
+      }
+
+      orderEntities.add(order);
+      order.setCustomerEntity(this);
+    }
+  }*/
 
 }

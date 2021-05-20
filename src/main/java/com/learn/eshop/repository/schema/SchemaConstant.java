@@ -7,6 +7,6 @@ public class SchemaConstant {
   static final String CARD_TYPE_TABLE_NAME = "CARD_TYPE";
   static final String CUSTOMER_TABLE_NAME = "CUSTOMER";
   static final String ADDRESS_TABLE_NAME = "Address";
-  static final String ORDER_TABLE_NAME = "ORDER";
+  static final String ORDER_TABLE_NAME = "ORDERS";
   static final String ORDER_ITEM_TABLE_NAME = "ORDER_ITEM";
 }

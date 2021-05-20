@@ -1,8 +1,6 @@
 package com.learn.eshop.repository.schema;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.Type;
@@ -14,16 +12,13 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
+@Entity
 @Getter
 @Setter
-@Entity
-@AllArgsConstructor
-@NoArgsConstructor
 @Table(name = SchemaConstant.ORDER_TABLE_NAME)
 public class OrderEntity {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Type(type = "uuid-char")
   private UUID id;
 
@@ -43,19 +38,20 @@ public class OrderEntity {
   private Set<OrderItemEntity> orderItems = new HashSet<>();
 
   @ManyToOne
-  @JoinColumn(name = "customer_id")
+  @JoinColumn(name = "customer_id", referencedColumnName = "id")
   private CustomerEntity customerEntity;
 
-  @OneToOne(cascade = CascadeType.ALL)
+  @OneToOne
+  @JoinColumn(name = "shipping_address_id", referencedColumnName = "id")
   private AddressEntity shippingAddress;
 
-  @OneToOne(cascade = CascadeType.ALL)
+  @OneToOne
+  @JoinColumn(name = "billing_address_id", referencedColumnName = "id")
   private AddressEntity billingAddress;
 
-
- /* public void add(OrderItemEntity entity){
-    if(entity != null){
-      if (orderItems==null){
+  /*public void add(OrderItemEntity entity) {
+    if (entity != null) {
+      if (orderItems == null) {
         orderItems = new HashSet<>();
       }
       orderItems.add(entity);
