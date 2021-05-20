@@ -21,4 +21,8 @@ public class Order {
   private String status;
   private Date dateCreated;
   private Date lastUpdate;
+
+/*  private String randomNumber(){
+    return RandomStringUtils.randomAlphanumeric(8).toUpperCase();
+  }*/
 }
