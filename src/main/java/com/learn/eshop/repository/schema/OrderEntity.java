@@ -22,6 +22,9 @@ public class OrderEntity {
   @Type(type = "uuid-char")
   private UUID id;
 
+  @Column(nullable = false)
+  private String orderTrackingNumber;
+
   private double totalPrice;
 
   private double totalQuantity;

@@ -13,6 +13,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Purchase {
+
   private UUID id;
   private Customer customer;
   private Address shippingAddress;
