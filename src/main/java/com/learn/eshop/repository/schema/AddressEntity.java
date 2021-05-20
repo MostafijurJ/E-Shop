@@ -30,4 +30,9 @@ public class AddressEntity {
   private String zipCode;
 
   private String country;
+
+  @OneToOne
+  @PrimaryKeyJoinColumn
+  private OrderEntity orderEntity;
+
 }

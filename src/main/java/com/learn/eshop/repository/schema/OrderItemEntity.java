@@ -30,4 +30,8 @@ public class OrderItemEntity {
 
   private int quantity;
 
+  @ManyToOne
+  @JoinColumn(name = "order_id")
+  private OrderEntity orderEntity;
+
 }

@@ -3,9 +3,14 @@ package com.learn.eshop.repository.schema;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.Type;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 @Getter
@@ -25,4 +30,14 @@ public class CustomerEntity {
   private String lastName;
 
   private String email;
+
+  @CreationTimestamp
+  private Date dateCreated;
+
+  @UpdateTimestamp
+  private Date lastUpdate;
+
+  @OneToMany(mappedBy = "customerEntity", cascade = CascadeType.ALL)
+  private Set<OrderEntity> orderEntities = new HashSet<>();
+
 }
