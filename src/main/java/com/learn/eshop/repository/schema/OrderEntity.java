@@ -52,7 +52,7 @@ public class OrderEntity {
   @JoinColumn(name = "billing_address_id", referencedColumnName = "id")
   private AddressEntity billingAddress;
 
-  /*public void add(OrderItemEntity entity) {
+  public void add(OrderItemEntity entity) {
     if (entity != null) {
       if (orderItems == null) {
         orderItems = new HashSet<>();
@@ -60,6 +60,6 @@ public class OrderEntity {
       orderItems.add(entity);
       entity.setOrderEntity(this);
     }
-  }*/
+  }
 
 }

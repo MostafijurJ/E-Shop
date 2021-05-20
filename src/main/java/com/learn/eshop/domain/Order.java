@@ -16,13 +16,11 @@ import java.util.UUID;
 @NoArgsConstructor
 public class Order {
   private UUID id;
+  private String orderTrackingNumber;
   private double totalPrice;
   private double totalQuantity;
   private String status;
   private Date dateCreated;
   private Date lastUpdate;
 
-/*  private String randomNumber(){
-    return RandomStringUtils.randomAlphanumeric(8).toUpperCase();
-  }*/
 }

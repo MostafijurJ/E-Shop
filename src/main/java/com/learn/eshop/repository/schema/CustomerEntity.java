@@ -39,7 +39,7 @@ public class CustomerEntity {
   @OneToMany(mappedBy = "customerEntity", cascade = CascadeType.ALL)
   private Set<OrderEntity> orderEntities = new HashSet<>();
 
-  /*public void add(OrderEntity order) {
+  public void add(OrderEntity order) {
 
     if (order != null) {
 
@@ -50,6 +50,6 @@ public class CustomerEntity {
       orderEntities.add(order);
       order.setCustomerEntity(this);
     }
-  }*/
+  }
 
 }
