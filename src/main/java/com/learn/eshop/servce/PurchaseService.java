@@ -34,22 +34,31 @@ public class PurchaseService {
 
     //TODO get info from purchase
     Order order = purchase.getOrder();
-    order.setOrderTrackingNumber(trackingNumberGenerator());
-    var orderEntity = orderDomainToEntity(order);
-    orderRepository.save(orderEntity);
-
     Address address = purchase.getShippingAddress();
-    addressRepository.save(addressDomainToEntity(address));
+
+    order.setOrderTrackingNumber(trackingNumberGenerator());
+
+    var orderEntity = orderDomainToEntity(order);
+    //TODO status will update later
+    orderEntity.setStatus("PENDING");
+    orderEntity.setShippingAddress(addressDomainToEntity(address));
 
     Customer customer = purchase.getCustomer();
-    customerRepository.save(customerDomainToEntity(customer));
+    var customerEntity = customerDomainToEntity(customer);
+    customerEntity.add(orderEntity);
+    customerRepository.save(customerEntity);
 
-    Set<OrderItem> items = purchase.getOrderItem();
-    items.forEach(
-        item -> {
-          // orderEntity.add(orderItemDomainToEntity(item));
-          orderItemRepository.save(orderItemDomainToEntity(item));
-        });
+    //TODO handling null pointer exception for oder items
+    Set<OrderItem> items = purchase.getOrderItems();
+    try {
+      if (!items.isEmpty())
+        items.forEach(item -> orderEntity.add(orderItemDomainToEntity(item)));
+      else {
+        throw new RuntimeException("Order items can't be empty");
+      }
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
 
 
     return new PurchaseResponse(order.getOrderTrackingNumber());

@@ -30,7 +30,8 @@ public class OrderEntity {
 
   private double totalQuantity;
 
-  private String status;
+  @Column(columnDefinition = "varchar(255) default 'Pending'")
+  private String status = "PENDING";
 
   @CreationTimestamp
   private Date dateCreated;
@@ -45,13 +46,9 @@ public class OrderEntity {
   @JoinColumn(name = "customer_id", referencedColumnName = "id")
   private CustomerEntity customerEntity;
 
-  @OneToOne
+  @OneToOne(cascade = CascadeType.ALL)
   @JoinColumn(name = "shipping_address_id", referencedColumnName = "id")
   private AddressEntity shippingAddress;
-
-  @OneToOne
-  @JoinColumn(name = "billing_address_id", referencedColumnName = "id")
-  private AddressEntity billingAddress;
 
   public void add(OrderItemEntity entity) {
     if (entity != null) {
