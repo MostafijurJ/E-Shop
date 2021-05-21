@@ -18,8 +18,8 @@ import java.util.UUID;
 public class ProductCategoryEntity {
 
   @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
   @Type(type = "uuid-char")
-  @GeneratedValue
   private UUID id;
 
   private String name;

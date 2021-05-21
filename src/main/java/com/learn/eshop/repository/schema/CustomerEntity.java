@@ -21,6 +21,7 @@ import java.util.UUID;
 public class CustomerEntity {
 
   @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
   @Type(type = "uuid-char")
   private UUID id;
 

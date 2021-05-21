@@ -3,6 +3,7 @@ package com.learn.eshop.servce;
 import com.learn.eshop.domain.*;
 import com.learn.eshop.repository.jpa.AddressRepository;
 import com.learn.eshop.repository.jpa.CustomerRepository;
+import com.learn.eshop.repository.jpa.OrderItemRepository;
 import com.learn.eshop.repository.jpa.OrderRepository;
 import com.learn.eshop.repository.schema.AddressEntity;
 import com.learn.eshop.repository.schema.CustomerEntity;
@@ -19,12 +20,14 @@ public class PurchaseService {
   private final CustomerRepository customerRepository;
   private final AddressRepository addressRepository;
   private final OrderRepository orderRepository;
+  private final OrderItemRepository orderItemRepository;
 
 
-  public PurchaseService(CustomerRepository customerRepository, AddressRepository addressRepository, OrderRepository orderRepository) {
+  public PurchaseService(CustomerRepository customerRepository, AddressRepository addressRepository, OrderRepository orderRepository, OrderItemRepository orderItemRepository) {
     this.customerRepository = customerRepository;
     this.addressRepository = addressRepository;
     this.orderRepository = orderRepository;
+    this.orderItemRepository = orderItemRepository;
   }
 
   public PurchaseResponse addPurchase(Purchase purchase) {
@@ -43,8 +46,11 @@ public class PurchaseService {
 
     Set<OrderItem> items = purchase.getOrderItem();
     items.forEach(
-        item ->
-            orderEntity.add(orderItemDomainToEntity(item)));
+        item -> {
+          // orderEntity.add(orderItemDomainToEntity(item));
+          orderItemRepository.save(orderItemDomainToEntity(item));
+        });
+
 
     return new PurchaseResponse(order.getOrderTrackingNumber());
   }

@@ -15,6 +15,7 @@ import java.util.UUID;
 @Table(name = SchemaConstant.ADDRESS_TABLE_NAME)
 public class AddressEntity {
   @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
   @Type(type = "uuid-char")
   private UUID id;
 

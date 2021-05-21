@@ -19,6 +19,7 @@ import java.util.UUID;
 public class OrderEntity {
 
   @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
   @Type(type = "uuid-char")
   private UUID id;
 
