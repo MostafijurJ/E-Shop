@@ -1,30 +1,34 @@
 package com.learn.eshop.repository.schema;
 
-
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
-import java.util.Set;
 import java.util.UUID;
 
 @Getter
 @Setter
 @Accessors(chain = true)
 @Entity
-@Table(name = SchemaConstant.PRODUCT_CATEGORY_TABLE_NAME)
-public class ProductCategoryEntity {
-
+@Table(name = SchemaConstant.ADDRESS_TABLE_NAME)
+public class AddressEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   @Type(type = "uuid-char")
   private UUID id;
 
-  private String name;
+  private String address;
 
-  @OneToMany(cascade = CascadeType.ALL, mappedBy = "categoryEntity")
-  private Set<ProductEntity> productEntities;
+  private String city;
+
+  private String zipCode;
+
+  private String country;
+
+  @OneToOne
+  @PrimaryKeyJoinColumn
+  private OrderEntity orderEntity;
 
 }
