@@ -18,7 +18,7 @@ public class CustomerService {
   }
 
   public List<Customer> getAllCustomer() {
-    var entities = customerRepository.findByOrderByDateCreated();
+    var entities = customerRepository.findByOrderByDateCreatedDesc();
     return entities.stream().map(this::entityToDomain).collect(Collectors.toList());
   }
 

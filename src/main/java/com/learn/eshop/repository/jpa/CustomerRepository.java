@@ -11,5 +11,5 @@ import java.util.UUID;
 @Repository
 @CrossOrigin
 public interface CustomerRepository extends JpaRepository<CustomerEntity, UUID> {
-  List<CustomerEntity> findByOrderByDateCreated();
+  List<CustomerEntity> findByOrderByDateCreatedDesc();
 }
