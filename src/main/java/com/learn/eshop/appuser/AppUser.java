@@ -1,14 +1,16 @@
 package com.learn.eshop.appuser;
 
+import com.learn.eshop.domain.User;
+import com.learn.eshop.repository.schema.Role;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.validation.constraints.Email;
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.UUID;
+import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -17,29 +19,26 @@ import java.util.UUID;
 @AllArgsConstructor
 public class AppUser implements UserDetails {
 
-  private UUID id;
-  private String name;
-  @Email(message = "Email is not Valid")
-  private String email;
-  private String password;
-  private AppUserRole appUserRole;
-  private Boolean locked;
-  private Boolean enabled;
+  private User user;
 
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {
-    SimpleGrantedAuthority authority = new SimpleGrantedAuthority(appUserRole.name());
-    return Collections.singletonList(authority);
+    Set<Role> roles = user.getRoles();
+    List<SimpleGrantedAuthority> authorities = new ArrayList<>();
+    for (Role role : roles) {
+      authorities.add(new SimpleGrantedAuthority(role.getAppUserRole().name()));
+    }
+    return authorities;
   }
 
   @Override
   public String getPassword() {
-    return password;
+    return getPassword();
   }
 
   @Override
   public String getUsername() {
-    return email;
+    return getUsername();
   }
 
   @Override
@@ -49,7 +48,7 @@ public class AppUser implements UserDetails {
 
   @Override
   public boolean isAccountNonLocked() {
-    return !locked;
+    return true;
   }
 
   @Override
@@ -59,6 +58,6 @@ public class AppUser implements UserDetails {
 
   @Override
   public boolean isEnabled() {
-    return enabled;
+    return user.isEnabled();
   }
 }
