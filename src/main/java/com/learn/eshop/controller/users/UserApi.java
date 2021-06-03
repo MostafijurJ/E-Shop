@@ -13,6 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public interface UserApi {
 
   @Operation(summary = "user registration purchase")
-  @PostMapping("/login")
+  @PostMapping("/register")
   ResponseEntity<User> saveUser(@RequestBody User userRequest);
 }

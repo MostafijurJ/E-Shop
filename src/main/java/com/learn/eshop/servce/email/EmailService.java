@@ -1,3 +1,4 @@
+/*
 package com.learn.eshop.servce.email;
 
 import lombok.AllArgsConstructor;
@@ -38,3 +39,4 @@ public class EmailService implements EmailSender {
     }
   }
 }
+*/

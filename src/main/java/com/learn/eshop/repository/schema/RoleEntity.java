@@ -4,9 +4,11 @@ import com.learn.eshop.appuser.AppUserRole;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.UUID;
 
 @Getter
@@ -24,5 +26,12 @@ public class RoleEntity {
   @Enumerated(EnumType.STRING)
   @Column(name = "Role_Name")
   private AppUserRole appUserRole = AppUserRole.USER;
+
+  @CreationTimestamp
+  private Date createdAt;
+
+  public RoleEntity(AppUserRole appUserRole) {
+    this.appUserRole = appUserRole;
+  }
 
 }
