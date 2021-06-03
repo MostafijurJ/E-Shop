@@ -14,7 +14,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @Entity
 @Table(name = SchemaConstant.ROLE_TABLE_NAME)
-public class Role {
+public class RoleEntity {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)

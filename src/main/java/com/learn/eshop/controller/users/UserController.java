@@ -1,4 +1,4 @@
-package com.learn.eshop.controller;
+package com.learn.eshop.controller.users;
 
 import com.learn.eshop.domain.User;
 import com.learn.eshop.servce.AppUserService;

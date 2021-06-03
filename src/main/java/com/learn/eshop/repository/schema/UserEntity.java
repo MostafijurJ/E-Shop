@@ -36,10 +36,10 @@ public class UserEntity {
 
   private String password;
 
-  @Column(columnDefinition = "bit default 1")
+  @Column(columnDefinition = "bit default 0")
   private boolean locked;
 
-  @Column(columnDefinition = "bit default 1")
+  @Column(columnDefinition = "bit default 0")
   private boolean enabled;
 
   @CreationTimestamp
@@ -47,6 +47,6 @@ public class UserEntity {
 
   @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
   @JoinTable(name = "user_role")
-  private Set<Role> roles = new HashSet<>();
+  private Set<RoleEntity> roles = new HashSet<>();
 
 }

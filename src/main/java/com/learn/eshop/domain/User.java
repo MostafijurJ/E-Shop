@@ -1,6 +1,5 @@
 package com.learn.eshop.domain;
 
-import com.learn.eshop.repository.schema.Role;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

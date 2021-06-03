@@ -20,6 +20,11 @@ public class AppUserService implements UserDetailsService {
   }
 
   public User saveUser(User user) {
+    var tempUser = userRepository.findByEmail(user.getEmail());
+    if (tempUser != null) {
+      throw new UsernameNotFoundException("This email contains with another account");
+    }
+
     var entity = userDomainToEntity(user);
     return userEntityToDomain(userRepository.save(entity));
   }

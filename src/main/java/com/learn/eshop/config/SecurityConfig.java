@@ -44,7 +44,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             "/products/**",
             "/products-category/**",
             "/purchase/**",
-            "/card-type/**",
+//            "/card-type/**",
+            "/user/**",
+            "/user_role/**",
             "/csrf")
         .permitAll()
         .anyRequest()
