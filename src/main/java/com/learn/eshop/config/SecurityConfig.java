@@ -38,13 +38,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .antMatchers(
             "/swagger-ui/**",
             "/swagger-resources/**",
+            "/v3/api-docs/**",
             "/swagger-ui-custom.html/**",
             "/country/**",
             "/customers/**",
             "/products/**",
             "/products-category/**",
             "/purchase/**",
-//            "/card-type/**",
+            "/card-type/**",
             "/user/**",
             "/user_role/**",
             "/csrf")
