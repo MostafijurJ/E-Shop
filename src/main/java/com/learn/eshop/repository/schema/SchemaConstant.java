@@ -9,4 +9,6 @@ public class SchemaConstant {
   static final String ADDRESS_TABLE_NAME = "Address";
   static final String ORDER_TABLE_NAME = "ORDERS";
   static final String ORDER_ITEM_TABLE_NAME = "ORDER_ITEM";
+  static final String USER_TABLE_NAME = "USER";
+  static final String ROLE_TABLE_NAME = "ROLE";
 }
