@@ -38,8 +38,8 @@ public class UserEntity {
   @Column(columnDefinition = "bit default 0")
   private boolean locked;
 
-  @Column(columnDefinition = "bit default 0")
-  private boolean enabled;
+  @Column(columnDefinition = "bit default 1")
+  private boolean enabled = true;
 
   @CreationTimestamp
   private Date createdAt;

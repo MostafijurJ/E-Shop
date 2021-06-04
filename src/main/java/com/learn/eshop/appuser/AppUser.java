@@ -33,12 +33,12 @@ public class AppUser implements UserDetails {
 
   @Override
   public String getPassword() {
-    return getPassword();
+    return user.getPassword();
   }
 
   @Override
   public String getUsername() {
-    return getUsername();
+    return user.getEmail();
   }
 
   @Override
