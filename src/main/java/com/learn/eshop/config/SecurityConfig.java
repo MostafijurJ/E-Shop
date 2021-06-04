@@ -1,5 +1,6 @@
 package com.learn.eshop.config;
 
+import com.learn.eshop.filter.JwtRequestFilter;
 import com.learn.eshop.servce.AppUserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -8,7 +9,9 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 
@@ -18,9 +21,11 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
   private final AppUserService appUserService;
+  private final JwtRequestFilter jwtRequestFilter;
 
-  public SecurityConfig(AppUserService appUserService) {
+  public SecurityConfig(AppUserService appUserService, JwtRequestFilter jwtRequestFilter) {
     this.appUserService = appUserService;
+    this.jwtRequestFilter = jwtRequestFilter;
   }
 
   @Override
@@ -47,12 +52,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             "/purchase/**",
             "/card-type/**",
             "/user/register/**",
+            "/user/login/**",
             "/user_role/**",
             "/csrf")
         .permitAll()
         .anyRequest()
         .authenticated().and()
-        .formLogin();
+        .formLogin()
+        .and().sessionManagement()
+        .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+
+    http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
   }
 
   @Bean

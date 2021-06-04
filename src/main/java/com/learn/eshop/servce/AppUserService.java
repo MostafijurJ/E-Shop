@@ -2,6 +2,7 @@ package com.learn.eshop.servce;
 
 import com.learn.eshop.appuser.AppUser;
 import com.learn.eshop.appuser.AppUserRole;
+import com.learn.eshop.domain.Credentials;
 import com.learn.eshop.domain.User;
 import com.learn.eshop.repository.jpa.UserRepository;
 import com.learn.eshop.repository.schema.RoleEntity;
@@ -40,6 +41,15 @@ public class AppUserService implements UserDetailsService {
       throw new UsernameNotFoundException("No user found with this email");
     }
     return new AppUser(userEntityToDomain(user));
+  }
+
+
+  public String loginWithCredentials(Credentials credentials) {
+    var entity = userRepository.findByEmailAndPassword(credentials.getUsername(), credentials.getPassword());
+    if (entity == null) {
+      throw new UsernameNotFoundException("username and password doesn't match");
+    }
+    return "Login is successfully works";
   }
 
 

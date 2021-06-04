@@ -1,5 +1,6 @@
 package com.learn.eshop.controller.users;
 
+import com.learn.eshop.domain.Credentials;
 import com.learn.eshop.domain.User;
 import io.swagger.annotations.Api;
 import io.swagger.v3.oas.annotations.Operation;
@@ -15,4 +16,10 @@ public interface UserApi {
   @Operation(summary = "user registration purchase")
   @PostMapping("/register")
   ResponseEntity<User> saveUser(@RequestBody User userRequest);
+
+  @Operation(summary = "user registration purchase")
+  @PostMapping("/login")
+  ResponseEntity<String> loginUser(@RequestBody Credentials loginCredentials);
+
+
 }

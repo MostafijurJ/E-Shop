@@ -1,5 +1,6 @@
 package com.learn.eshop.controller.users;
 
+import com.learn.eshop.domain.Credentials;
 import com.learn.eshop.domain.User;
 import com.learn.eshop.servce.AppUserService;
 import org.springframework.http.ResponseEntity;
@@ -18,5 +19,10 @@ public class UserController implements UserApi {
   @Override
   public ResponseEntity<User> saveUser(User userRequest) {
     return ResponseEntity.ok(appUserService.saveUser(userRequest));
+  }
+
+  @Override
+  public ResponseEntity<String> loginUser(Credentials loginCredentials) {
+    return ResponseEntity.ok(appUserService.loginWithCredentials(loginCredentials));
   }
 }

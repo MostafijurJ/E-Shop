@@ -11,4 +11,6 @@ import java.util.UUID;
 @CrossOrigin
 public interface UserRepository extends JpaRepository<UserEntity, UUID> {
   UserEntity findByEmail(String email);
+
+  UserEntity findByEmailAndPassword(String email, String password);
 }
