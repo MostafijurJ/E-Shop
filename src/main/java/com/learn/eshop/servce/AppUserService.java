@@ -12,7 +12,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
+import java.util.Collections;
 
 @Service
 public class AppUserService implements UserDetailsService {
@@ -29,7 +29,7 @@ public class AppUserService implements UserDetailsService {
       throw new UsernameNotFoundException("This email contains with another account");
     }
     var entity = userDomainToEntity(user);
-    entity.setRoles(Arrays.asList(new RoleEntity(AppUserRole.USER)));
+    entity.setRoles(Collections.singletonList(new RoleEntity(AppUserRole.USER)));
     return userEntityToDomain(userRepository.save(entity));
   }
 
