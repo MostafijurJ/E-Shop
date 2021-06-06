@@ -1,4 +1,4 @@
-package com.learn.eshop.domain;
+package com.learn.eshop.domain.authentication;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

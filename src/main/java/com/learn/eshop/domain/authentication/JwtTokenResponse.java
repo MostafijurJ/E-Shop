@@ -1,4 +1,4 @@
-package com.learn.eshop.domain;
+package com.learn.eshop.domain.authentication;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Credentials {
-  private String username;
-  private String password;
+public class JwtTokenResponse {
+  private String message;
+  private String token;
 }

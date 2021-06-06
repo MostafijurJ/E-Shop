@@ -1,7 +1,8 @@
 package com.learn.eshop.controller.users;
 
-import com.learn.eshop.domain.Credentials;
-import com.learn.eshop.domain.User;
+import com.learn.eshop.domain.authentication.Credentials;
+import com.learn.eshop.domain.authentication.JwtTokenResponse;
+import com.learn.eshop.domain.authentication.User;
 import com.learn.eshop.servce.AppUserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -22,7 +23,7 @@ public class UserController implements UserApi {
   }
 
   @Override
-  public ResponseEntity<String> loginUser(Credentials loginCredentials) {
+  public ResponseEntity<JwtTokenResponse> loginUser(Credentials loginCredentials) {
     return ResponseEntity.ok(appUserService.loginWithCredentials(loginCredentials));
   }
 }

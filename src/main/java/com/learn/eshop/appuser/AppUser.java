@@ -1,7 +1,7 @@
 package com.learn.eshop.appuser;
 
-import com.learn.eshop.domain.Role;
-import com.learn.eshop.domain.User;
+import com.learn.eshop.domain.authentication.Role;
+import com.learn.eshop.domain.authentication.User;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

@@ -1,6 +1,6 @@
 package com.learn.eshop.servce;
 
-import com.learn.eshop.domain.Role;
+import com.learn.eshop.domain.authentication.Role;
 import com.learn.eshop.repository.jpa.UserRoleRepository;
 import com.learn.eshop.repository.schema.RoleEntity;
 import org.springframework.beans.BeanUtils;

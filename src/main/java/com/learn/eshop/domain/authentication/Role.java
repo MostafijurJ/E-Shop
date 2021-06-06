@@ -1,4 +1,4 @@
-package com.learn.eshop.domain;
+package com.learn.eshop.domain.authentication;
 
 import com.learn.eshop.appuser.AppUserRole;
 import lombok.AllArgsConstructor;

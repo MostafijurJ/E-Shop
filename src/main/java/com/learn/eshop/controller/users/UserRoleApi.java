@@ -1,6 +1,6 @@
 package com.learn.eshop.controller.users;
 
-import com.learn.eshop.domain.Role;
+import com.learn.eshop.domain.authentication.Role;
 import io.swagger.annotations.Api;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.ResponseEntity;

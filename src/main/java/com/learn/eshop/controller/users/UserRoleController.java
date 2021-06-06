@@ -1,6 +1,6 @@
 package com.learn.eshop.controller.users;
 
-import com.learn.eshop.domain.Role;
+import com.learn.eshop.domain.authentication.Role;
 import com.learn.eshop.servce.UserRoleService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;

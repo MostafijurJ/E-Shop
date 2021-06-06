@@ -2,11 +2,13 @@ package com.learn.eshop.servce;
 
 import com.learn.eshop.appuser.AppUser;
 import com.learn.eshop.appuser.AppUserRole;
-import com.learn.eshop.domain.Credentials;
-import com.learn.eshop.domain.User;
+import com.learn.eshop.domain.authentication.Credentials;
+import com.learn.eshop.domain.authentication.JwtTokenResponse;
+import com.learn.eshop.domain.authentication.User;
 import com.learn.eshop.repository.jpa.UserRepository;
 import com.learn.eshop.repository.schema.RoleEntity;
 import com.learn.eshop.repository.schema.UserEntity;
+import com.learn.eshop.util.JwtUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -19,9 +21,11 @@ import java.util.Collections;
 public class AppUserService implements UserDetailsService {
 
   private final UserRepository userRepository;
+  private final JwtUtil jwtUtil;
 
-  public AppUserService(UserRepository userRepository) {
+  public AppUserService(UserRepository userRepository, JwtUtil jwtUtil) {
     this.userRepository = userRepository;
+    this.jwtUtil = jwtUtil;
   }
 
   public User saveUser(User user) {
@@ -44,12 +48,19 @@ public class AppUserService implements UserDetailsService {
   }
 
 
-  public String loginWithCredentials(Credentials credentials) {
+  public JwtTokenResponse loginWithCredentials(Credentials credentials) {
     var entity = userRepository.findByEmailAndPassword(credentials.getUsername(), credentials.getPassword());
     if (entity == null) {
       throw new UsernameNotFoundException("username and password doesn't match");
     }
-    return "Login is successfully works";
+
+    //TODO get user details and generate token using this
+    var userDetails = loadUserByUsername(credentials.getUsername());
+    var token = jwtUtil.generateToken(userDetails);
+    var tokenRes = new JwtTokenResponse();
+    tokenRes.setToken(token);
+    tokenRes.setMessage("Login Successful!.");
+    return tokenRes;
   }
 
 
