@@ -1,0 +1,62 @@
+-- MySQL dump 10.13  Distrib 8.0.25, for Linux (x86_64)
+--
+-- Host: 127.0.0.1    Database: eshop
+-- ------------------------------------------------------
+-- Server version	8.0.25-0ubuntu0.20.04.1
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `orders`
+--
+
+DROP TABLE IF EXISTS `orders`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `orders` (
+  `id` varchar(255) NOT NULL,
+  `date_created` datetime(6) DEFAULT NULL,
+  `last_update` datetime(6) DEFAULT NULL,
+  `order_tracking_number` varchar(255) NOT NULL,
+  `status` varchar(255) DEFAULT 'Pending',
+  `total_price` double NOT NULL,
+  `total_quantity` double NOT NULL,
+  `customer_id` varchar(255) DEFAULT NULL,
+  `shipping_address_id` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK624gtjin3po807j3vix093tlf` (`customer_id`),
+  KEY `FKh0uue95ltjysfmkqb5abgk7tj` (`shipping_address_id`),
+  CONSTRAINT `FK624gtjin3po807j3vix093tlf` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`id`),
+  CONSTRAINT `FKh0uue95ltjysfmkqb5abgk7tj` FOREIGN KEY (`shipping_address_id`) REFERENCES `address` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `orders`
+--
+
+LOCK TABLES `orders` WRITE;
+/*!40000 ALTER TABLE `orders` DISABLE KEYS */;
+INSERT INTO `orders` VALUES ('38bbd933-1faa-4a37-86ef-3c13a79b0c3d','2021-05-31 19:57:05.694000','2021-05-31 19:57:05.694000','MNBRDCAR','PENDING',0,0,'4b5b5f36-5743-4436-b9a9-4fdebb74dfe0','2b6fe68d-6229-4497-bac5-2e74df9341a8'),('49d26222-1c85-43f4-9b9f-809d5d0ee36e','2021-05-24 14:31:25.991000','2021-05-24 14:31:25.991000','B2YS6ZIW','PENDING',18.99,1,'0be59960-dca6-4794-8391-fdf90bd69897','17e78300-00a0-4405-9ea5-f89aebbc4d3a'),('55398e9c-8dfd-4ee1-865c-9d7abb23bcad','2021-05-24 16:11:43.159000','2021-05-24 16:11:43.159000','PFFH5ICD','PENDING',37.98,2,'b82253c9-7b17-478a-91da-10cf2dbc7dfe','4541a504-063a-4b95-b82e-08f6fa4252b7'),('bdb57328-1368-4dbe-b42e-7fffa9594a6e','2021-05-31 10:44:22.816000','2021-05-31 10:44:22.816000','QYGTGZ7Q','PENDING',113.94,6,'d6283ec1-0ac8-4137-a6e1-7937f09569ef','3844902d-f1fb-49d8-9e6e-a31a3d2c107f'),('c55191a9-b472-4a22-b8f2-94233d25d36e','2021-05-28 15:07:58.030000','2021-05-28 15:07:58.030000','VQI9QTKL','PENDING',49.98,2,'fb2a0ce9-4364-4341-86cb-3daaf07c7749','a5141ee7-1616-4534-b66f-ae2d8de29973'),('da8a2d25-ae53-41ba-ac97-79bf62ae8716','2021-05-28 09:37:49.150000','2021-05-28 09:37:49.150000','VHBBWELN','PENDING',49.97,3,'0af87b84-3399-4b36-84d8-83f6313772c9','5c50e1fc-a2e4-411e-ad31-82ea5f53473d');
+/*!40000 ALTER TABLE `orders` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2021-06-23 12:01:00
