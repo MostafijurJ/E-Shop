@@ -11,10 +11,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.io.FileNotFoundException;
 
 @Api(value = "country", tags = "country")
-@RequestMapping(path = "/reports/country")
-public interface CountryReportApi {
+@RequestMapping(path = "/reports")
+public interface ReportApi {
 
-    @Operation(summary = "Get all Country reports")
-    @GetMapping("/{format}")
-    ResponseEntity<String> exportCountryReport(@PathVariable String format) throws JRException, FileNotFoundException;
+  @Operation(summary = "Get all Country reports")
+  @GetMapping("/country/{format}")
+  ResponseEntity<String> exportCountryReport(@PathVariable String format)
+      throws JRException, FileNotFoundException;
+
+  @Operation(summary = "Get all products reports")
+  @GetMapping("/product/{format}")
+  ResponseEntity<String> exportProductReport(@PathVariable String format)
+      throws JRException, FileNotFoundException;
 }
