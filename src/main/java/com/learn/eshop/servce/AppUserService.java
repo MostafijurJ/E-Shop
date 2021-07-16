@@ -1,7 +1,7 @@
 package com.learn.eshop.servce;
 
 import com.learn.eshop.appuser.AppUser;
-import com.learn.eshop.appuser.AppUserRole;
+import com.learn.eshop.domain.AppUserRole;
 import com.learn.eshop.domain.authentication.Credentials;
 import com.learn.eshop.domain.authentication.JwtTokenResponse;
 import com.learn.eshop.domain.authentication.User;
@@ -49,17 +49,17 @@ public class AppUserService implements UserDetailsService {
 
 
   public JwtTokenResponse loginWithCredentials(Credentials credentials) {
-    var entity = userRepository.findByEmailAndPassword(credentials.getUsername(), credentials.getPassword());
+      var tokenRes = new JwtTokenResponse();
+      var entity = userRepository.findByEmailAndPassword(credentials.getUsername(), credentials.getPassword());
     if (entity == null) {
+        tokenRes.setMessage("Invalid username and password!");
       throw new UsernameNotFoundException("username and password doesn't match");
     }
-
     //TODO get user details and generate token using this
     var userDetails = loadUserByUsername(credentials.getUsername());
     var token = jwtUtil.generateToken(userDetails);
-    var tokenRes = new JwtTokenResponse();
-    tokenRes.setToken(token);
-    tokenRes.setMessage("Login Successful!.");
+      tokenRes.setToken(token);
+      tokenRes.setMessage("login is successful!.");
     return tokenRes;
   }
 

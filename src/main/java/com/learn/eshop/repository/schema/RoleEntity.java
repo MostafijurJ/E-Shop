@@ -1,6 +1,6 @@
 package com.learn.eshop.repository.schema;
 
-import com.learn.eshop.appuser.AppUserRole;
+import com.learn.eshop.domain.AppUserRole;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

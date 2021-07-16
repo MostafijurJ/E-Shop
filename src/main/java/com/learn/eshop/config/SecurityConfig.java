@@ -41,20 +41,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .disable()
         .authorizeRequests()
         .antMatchers(
-            "/swagger-ui/**",
-            "/swagger-resources/**",
-            "/v3/api-docs/**",
-            "/swagger-ui-custom.html/**",
-//            "/country/**",
-            "/customers/**",
-            "/products/**",
-            "/products-category/**",
-            "/purchase/**",
-            "/card-type/**",
-            "/user/register/**",
-            "/user/login/**",
-            "/user_role/**",
-            "/csrf")
+                "/swagger-ui/**",
+                "/swagger-resources/**",
+                "/v3/api-docs/**",
+                "/swagger-ui-custom.html/**",
+                "/country/**",
+                "/reports/**",
+                "/customers/**",
+                "/products/**",
+                "/products-category/**",
+                "/purchase/**",
+                "/card-type/**",
+                "/user/register/**",
+                "/user/login/**",
+                "/user_role/**",
+                "/csrf")
         .permitAll()
         .anyRequest()
         .authenticated().and()

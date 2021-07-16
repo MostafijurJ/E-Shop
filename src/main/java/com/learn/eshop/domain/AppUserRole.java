@@ -1,4 +1,4 @@
-package com.learn.eshop.appuser;
+package com.learn.eshop.domain;
 
 public enum AppUserRole {
   ADMIN,

@@ -16,6 +16,10 @@ configurations {
 
 repositories {
 	mavenCentral()
+	maven{url "https://jasperreports.sourceforge.net/maven2/"}
+	maven{url "https://jaspersoft.artifactoryonline.com/jaspersoft/third-party-ce-artifacts/"}
+	google()
+
 }
 
 dependencies {
@@ -31,6 +35,12 @@ dependencies {
 
 	implementation 'org.springframework.boot:spring-boot-starter-mail'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
+
+	implementation group: 'net.sf.jasperreports', name: 'jasperreports', version: '6.14.0'
+
+	implementation 'com.lowagie:itext:2.1.7'
+
+
 
 	compile group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
 	compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.1'
