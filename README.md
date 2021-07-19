@@ -11,13 +11,21 @@ This repository is the back-end service. you can find the front-end Module here:
 * Swagger is used as api documentation tools
 
 
-### API Documentation
+## API Documentation
 * [Swagger](http://localhost:1112/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config#/)
  
  ![image](https://user-images.githubusercontent.com/40955844/126137049-997e1bfc-dc7a-4b87-b6ba-00f3d909c98b.png)
 
+## Reports
 
-### Description
+In the repors section, admin will able to download and export reports. Api url of the reports are listed below. Report are available in HTML and PDF format. Admin can export any of types as he require.
+
+* [Product Report](http://localhost:1112/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config#/report-controller/exportProductReport)
+* [Available Country](http://localhost:1112/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config#/report-controller/exportCountryReport)
+* [Customer Report](http://localhost:1112/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config#/report-controller/exportCustomerReport)
+
+
+## Description
 Here I've attached some snapshoots of Eshop.
 
 * Book list
