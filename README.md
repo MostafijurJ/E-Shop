@@ -1,6 +1,6 @@
 # E-Shop
 
-### ESHOP is an ecomerce platform
+### E-SHOP is an ecomerce platform
 
 This repository is the back-end service. you can find the front-end Module here: [Eshop front end](https://github.com/MostafijurJ/eshop-frontend/tree/develop)
 
@@ -9,6 +9,7 @@ This repository is the back-end service. you can find the front-end Module here:
 * Spring Boot 2.4.5
 * MySQL 8.0 
 * Swagger is used as api documentation tools
+* IDE: INTELLIJ IDEA
 
 
 ## API Documentation
