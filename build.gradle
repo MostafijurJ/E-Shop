@@ -1,6 +1,7 @@
 plugins {
 	id 'org.springframework.boot' version '2.4.5'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id "com.microsoft.azure.azurefunctions" version "1.5.1"
 	id 'java'
 }
 
@@ -29,6 +30,9 @@ dependencies {
 	implementation group: 'org.springdoc', name: 'springdoc-openapi-ui', version: '1.5.2'
 	implementation("io.springfox:springfox-swagger2:3.0.0")
 	implementation("io.springfox:springfox-swagger-ui:3.0.0")
+
+	implementation group: 'com.microsoft.azure', name: 'azure-core', version: '0.6.0'
+
 
 
 }
