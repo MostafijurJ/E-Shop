@@ -22,6 +22,10 @@ public class CountryService {
     return entities.stream().map(this::entityToDomain).collect(Collectors.toList());
   }
 
+  public CountryEntity createCountry(CountryEntity country) {
+    return countryRepository.save(country);
+  }
+
   private Country entityToDomain(CountryEntity entity) {
     var domain = new Country();
     BeanUtils.copyProperties(entity, domain);
